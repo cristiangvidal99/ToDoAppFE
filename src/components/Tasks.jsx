@@ -13,7 +13,7 @@ function Tasks() {
   const [selectedTask, setSelectedTask] = useState(null);
 
   const GetTask = () => {
-    return fetch("https://localhost:7020/Task/GetAllTasks")
+    return fetch("https://todoappbe-algl.onrender.com/Task/GetAllTasks")
       .then((response) => response.json())
       .then((json) => setTasks(json))
       .catch((error) => console.error("Error fetching task:", error));
