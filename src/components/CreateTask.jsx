@@ -2,7 +2,7 @@ import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 import CreateTaskForm from "./Forms/CreateTaskForm";
 
-function CreateTask() {
+function CreateTask({setShowCreateTaskModal, getTask}) {
   const [show, setShow] = useState(true);
 
   const handleClose = () => setShow(false);
@@ -12,7 +12,7 @@ function CreateTask() {
         <Modal.Title>Create Task:</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <CreateTaskForm />
+        <CreateTaskForm getTask={getTask} setShowCreateTaskModal={setShowCreateTaskModal} />
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>

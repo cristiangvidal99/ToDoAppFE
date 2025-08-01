@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function CreateTaskForm() {
+function CreateTaskForm({setShowCreateTaskModal, getTask}) {
   const [startDate, setStartDate] = useState(new Date());
   const [form, setForm] = useState({
     title: '',
@@ -25,7 +25,7 @@ function CreateTaskForm() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    const url = "https://localhost:7020/Task/CreateTask";
+    const url = "https://todoappbe-algl.onrender.com/Task/CreateTask";
 
     try {
       const response = await fetch(url, {
@@ -41,6 +41,10 @@ function CreateTaskForm() {
       }
 
       const data = await response.json();
+      if (data != null) {
+        setShowCreateTaskModal(false);
+        getTask();
+      }
       console.log("Tarea creada:", data);
     } catch (error) {
       console.error("Hubo un error:", error);

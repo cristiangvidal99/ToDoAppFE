@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function UpdateTaskForm({ selectedTask, setShowModal }) {
+function UpdateTaskForm({ selectedTask, setShowModal, GetTask }) {
   const [startDate, setStartDate] = useState(new Date());
   
   const [form, setForm] = useState({
@@ -19,7 +19,7 @@ function UpdateTaskForm({ selectedTask, setShowModal }) {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    const url = "https://localhost:7020/Task/UpdateTask";
+    const url = "https://todoappbe-algl.onrender.com/Task/UpdateTask";
 
     try {
       const response = await fetch(url, {
@@ -37,6 +37,7 @@ function UpdateTaskForm({ selectedTask, setShowModal }) {
       const data = await response.json();
       if (data != null) {
         setShowModal(false);
+        GetTask();
       }
       console.log("Task updated:", data);
     } catch (error) {
@@ -52,8 +53,6 @@ function UpdateTaskForm({ selectedTask, setShowModal }) {
     });
   };
 
-  console.log(form);
-  
   return (
     <Form>
       {/* Title */}
