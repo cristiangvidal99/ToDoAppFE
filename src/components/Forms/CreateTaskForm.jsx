@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function CreateTaskForm({setShowCreateTaskModal, getTask}) {
+function CreateTaskForm({ setShowCreateTaskModal, getTask }) {
   const [startDate, setStartDate] = useState(new Date());
   const [form, setForm] = useState({
-    title: '',
-    description: '',
-    priority: '',
-    date: new Date().toISOString()
+    title: "",
+    description: "",
+    priority: "",
+    date: new Date().toISOString(),
   });
 
   const handleInputChange = (event) => {
@@ -21,11 +21,10 @@ function CreateTaskForm({setShowCreateTaskModal, getTask}) {
     });
   };
 
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    const url = "https://todoappbe-algl.onrender.com/Task/CreateTask";
+    const url = "https://nodemigration-todoappbe.onrender.com/createTask/";
 
     try {
       const response = await fetch(url, {
@@ -109,8 +108,8 @@ function CreateTaskForm({setShowCreateTaskModal, getTask}) {
         />
       </Form.Group>
 
-      <Button 
-        variant="primary" 
+      <Button
+        variant="primary"
         type="submit"
         onClick={(event) => handleFormSubmit(event)}
       >

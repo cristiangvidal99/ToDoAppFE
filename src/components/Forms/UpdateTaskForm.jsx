@@ -18,7 +18,7 @@ function UpdateTaskForm({ selectedTask, setShowModal, GetTask }) {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    const url = "http://localhost:3000/api/editTaskById";
+    const url = "https://nodemigration-todoappbe.onrender.com/api/editTaskById";
 
     try {
       const response = await fetch(url, {

@@ -3,13 +3,10 @@ import { Button, Modal } from "react-bootstrap";
 
 function DeleteTask({ selectedTask, setShowModalDelete, getTask }) {
   const [show, setShow] = useState(true);
-  const [deleteTask, setDeleteTask] = useState({
-    id: selectedTask.id,
-  });
-  
+
   const handleClose = () => setShow(false);
   const handleSubmit = async () => {
-    const url = `https://todoappbe-algl.onrender.com/Task/DeleteTask/${deleteTask.id}`;
+    const url = `https://nodemigration-todoappbe.onrender.com/api/deleteTaskById/${selectedTask.id}`;
 
     try {
       const response = await fetch(url, {
@@ -24,7 +21,8 @@ function DeleteTask({ selectedTask, setShowModalDelete, getTask }) {
       }
 
       const data = await response;
-      
+      console.log(data);
+
       if (data != null) {
         setShowModalDelete(false);
         handleClose();
