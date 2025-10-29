@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import UpdateTask from "./UpdateTask";
 import DeleteTask from "./DeleteTask";
-import GetPriorityName from "../helpers/GetPriorityName"
+import GetPriorityName from "../helpers/GetPriorityName";
 import CreateTask from "./CreateTask";
 
 function Tasks() {
@@ -13,7 +13,7 @@ function Tasks() {
   const [selectedTask, setSelectedTask] = useState(null);
 
   const GetTask = () => {
-    return fetch("https://todoappbe-algl.onrender.com/Task/GetAllTasks")
+    return fetch("https://nodemigration-todoappbe.onrender.com/api/task/")
       .then((response) => response.json())
       .then((json) => setTasks(json))
       .catch((error) => console.error("Error fetching task:", error));
@@ -21,7 +21,7 @@ function Tasks() {
 
   const FormatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('es-AR');
+    return date.toLocaleDateString("es-AR");
   };
 
   useEffect(() => {
@@ -87,10 +87,19 @@ function Tasks() {
           GetTask={GetTask}
         />
       )}
-      {showCreateTaskModal && <CreateTask getTask={GetTask} setShowCreateTaskModal={setShowCreateTaskModal} />}
+      {showCreateTaskModal && (
+        <CreateTask
+          getTask={GetTask}
+          setShowCreateTaskModal={setShowCreateTaskModal}
+        />
+      )}
 
       {showModalDelete && selectedTask && (
-        <DeleteTask selectedTask={selectedTask} setShowModalDelete={setShowModalDelete} getTask={GetTask} />
+        <DeleteTask
+          selectedTask={selectedTask}
+          setShowModalDelete={setShowModalDelete}
+          getTask={GetTask}
+        />
       )}
     </>
   );

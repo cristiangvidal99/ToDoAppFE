@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function UpdateTaskForm({ selectedTask, setShowModal, GetTask }) {
   const [startDate, setStartDate] = useState(new Date());
-  
+
   const [form, setForm] = useState({
     id: selectedTask.id,
     title: selectedTask.title,
@@ -15,11 +15,10 @@ function UpdateTaskForm({ selectedTask, setShowModal, GetTask }) {
     date: selectedTask.date,
   });
 
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    const url = "https://todoappbe-algl.onrender.com/Task/UpdateTask";
+    const url = "http://localhost:3000/api/editTaskById";
 
     try {
       const response = await fetch(url, {
