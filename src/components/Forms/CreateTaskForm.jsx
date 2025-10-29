@@ -24,7 +24,7 @@ function CreateTaskForm({ setShowCreateTaskModal, getTask }) {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    const url = "https://nodemigration-todoappbe.onrender.com/createTask/";
+    const url = "https://nodemigration-todoappbe.onrender.com/api/createTask/";
 
     try {
       const response = await fetch(url, {
